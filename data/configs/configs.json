@@ -1,0 +1,23 @@
+{
+  "my-project-agent-t5w38": {
+    "id": "my-project-agent-t5w38",
+    "name": "My Project Agent",
+    "description": "Configured via ToolRelay",
+    "servers": [
+      "github",
+      "filesystem",
+      "memory"
+    ],
+    "createdAt": 1777120688420
+  },
+  "my-project-agent-i38sa": {
+    "id": "my-project-agent-i38sa",
+    "name": "My Project Agent",
+    "description": "Configured via ToolRelay",
+    "servers": [
+      "github",
+      "filesystem"
+    ],
+    "createdAt": 1777120951164
+  }
+}

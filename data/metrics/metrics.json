@@ -1,0 +1,26 @@
+{
+  "github": {
+    "totalCalls": 0,
+    "successes": 0,
+    "failures": 0,
+    "latencies": [],
+    "status": "live",
+    "lastPing": 1777120953404
+  },
+  "memory": {
+    "totalCalls": 0,
+    "successes": 0,
+    "failures": 0,
+    "latencies": [],
+    "status": "live",
+    "lastPing": 1777120697164
+  },
+  "filesystem": {
+    "totalCalls": 0,
+    "successes": 0,
+    "failures": 0,
+    "latencies": [],
+    "status": "down",
+    "lastPing": 1777120953333
+  }
+}
