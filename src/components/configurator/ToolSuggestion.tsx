@@ -13,28 +13,28 @@ export function ToolSuggestion({ suggestion, selected, onToggle }: ToolSuggestio
     <div 
       onClick={onToggle}
       className={cn(
-        "bg-white/80 backdrop-blur-sm rounded-xl p-4 my-2 cursor-pointer transition-all duration-300 border-2",
+        "bg-white/80 backdrop-blur-sm rounded-2xl p-6 my-3 cursor-pointer transition-all duration-300 border-2",
         selected ? "border-primary/50 bg-primary/5" : "border-transparent hover:border-border"
       )}
     >
       <div className="flex items-start justify-between">
-        <div className="flex items-center gap-3">
-          <div className={cn("p-2 rounded-lg", selected ? "bg-primary/15 text-primary" : "bg-surface-warm text-text-muted")}>
-            <Server className="w-5 h-5" />
+        <div className="flex items-center gap-4">
+          <div className={cn("p-3 rounded-xl", selected ? "bg-primary/15 text-primary" : "bg-surface-warm text-text-muted")}>
+            <Server className="w-6 h-6" />
           </div>
           <div>
-            <h4 className="font-semibold text-[#1A1A1A] capitalize font-[family-name:var(--font-instrument-sans)]">{suggestion.serverName}</h4>
-            <p className="text-sm text-text-muted mt-1 font-[family-name:var(--font-instrument-sans)]">{suggestion.rationale}</p>
+            <h4 className="font-semibold text-xl text-[#1A1A1A] capitalize font-[family-name:var(--font-instrument-sans)]">{suggestion.serverName}</h4>
+            <p className="text-base text-text-muted mt-2 font-[family-name:var(--font-instrument-sans)]">{suggestion.rationale}</p>
           </div>
         </div>
         <div className={cn("rounded-full p-1", selected ? "text-primary" : "text-border")}>
-          <CheckCircle className="w-6 h-6" />
+          <CheckCircle className="w-8 h-8" />
         </div>
       </div>
       
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-5 flex flex-wrap gap-3">
         {suggestion.recommendedTools.map(t => (
-          <span key={t} className="text-xs px-2.5 py-1 rounded-md bg-surface-warm text-text-secondary border border-border-light font-[family-name:var(--font-instrument-sans)]">
+          <span key={t} className="text-sm px-3 py-1.5 rounded-lg bg-surface-warm text-text-secondary border border-border-light font-[family-name:var(--font-instrument-sans)]">
             {t}
           </span>
         ))}

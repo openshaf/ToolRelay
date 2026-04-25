@@ -28,5 +28,14 @@
       "github"
     ],
     "createdAt": 1777124652898
+  },
+  "my-project-agent-9w4z9": {
+    "id": "my-project-agent-9w4z9",
+    "name": "My Project Agent",
+    "description": "Configured via ToolRelay",
+    "servers": [
+      "github"
+    ],
+    "createdAt": 1777138297040
   }
 }
