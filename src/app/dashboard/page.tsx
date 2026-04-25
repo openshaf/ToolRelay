@@ -63,50 +63,53 @@ export default function Dashboard() {
   return (
     <div className="space-y-8 pb-12">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-white mb-2">Live Routing Dashboard</h1>
-        <p className="text-gray-400">Monitor MCP server health, traffic, and routing decisions in real-time.</p>
+        <span className="badge-sticker text-xs mb-4">Dashboard</span>
+        <h1 className="text-3xl sm:text-4xl font-normal text-[#1A1A1A] mt-4 mb-2 font-[family-name:var(--font-instrument-serif)]">
+          Live Routing <em>Dashboard</em>
+        </h1>
+        <p className="text-text-muted font-[family-name:var(--font-instrument-sans)]">Monitor MCP server health, traffic, and routing decisions in real-time.</p>
       </header>
 
       {/* Aggregate Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="glass-card p-6 flex items-center gap-4">
-          <div className="p-3 bg-primary/20 text-primary rounded-xl">
+        <div className="warm-card p-6 flex items-center gap-4">
+          <div className="p-3 bg-primary/10 text-primary rounded-xl">
             <Activity className="w-8 h-8" />
           </div>
           <div>
-            <div className="text-sm text-gray-400">Total Requests</div>
-            <div className="text-3xl font-bold text-white">{totalCalls}</div>
+            <div className="text-sm text-text-muted font-[family-name:var(--font-instrument-sans)]">Total Requests</div>
+            <div className="text-3xl font-bold text-[#1A1A1A] font-[family-name:var(--font-instrument-sans)]">{totalCalls}</div>
           </div>
         </div>
         
-        <div className="glass-card p-6 flex items-center gap-4">
-          <div className="p-3 bg-green-500/20 text-green-400 rounded-xl">
+        <div className="warm-card p-6 flex items-center gap-4">
+          <div className="p-3 bg-[#2D8A4E]/10 text-[#2D8A4E] rounded-xl">
             <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
           <div>
-            <div className="text-sm text-gray-400">Overall Success Rate</div>
-            <div className="text-3xl font-bold text-white">{overallSuccessRate}%</div>
+            <div className="text-sm text-text-muted font-[family-name:var(--font-instrument-sans)]">Overall Success Rate</div>
+            <div className="text-3xl font-bold text-[#1A1A1A] font-[family-name:var(--font-instrument-sans)]">{overallSuccessRate}%</div>
           </div>
         </div>
 
-        <div className="glass-card p-6 flex items-center gap-4">
-          <div className="p-3 bg-accent/20 text-accent rounded-xl">
+        <div className="warm-card p-6 flex items-center gap-4">
+          <div className="p-3 bg-primary/10 text-primary rounded-xl">
             <Server className="w-8 h-8" />
           </div>
           <div>
-            <div className="text-sm text-gray-400">Active Servers</div>
-            <div className="text-3xl font-bold text-white">{activeServers.length}</div>
+            <div className="text-sm text-text-muted font-[family-name:var(--font-instrument-sans)]">Active Servers</div>
+            <div className="text-3xl font-bold text-[#1A1A1A] font-[family-name:var(--font-instrument-sans)]">{activeServers.length}</div>
           </div>
         </div>
       </div>
 
       {/* Server Grid */}
       <div>
-        <h2 className="text-xl font-bold text-white mb-4">MCP Server Pool</h2>
+        <h2 className="text-xl font-normal text-[#1A1A1A] mb-4 font-[family-name:var(--font-instrument-serif)]">MCP Server Pool</h2>
         {Object.keys(metrics).length === 0 ? (
-          <div className="glass-card p-8 text-center text-gray-400">
+          <div className="warm-card p-8 text-center text-text-muted font-[family-name:var(--font-instrument-sans)]">
             No servers are currently running. Create an endpoint first.
           </div>
         ) : (

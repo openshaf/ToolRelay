@@ -19,5 +19,14 @@
       "filesystem"
     ],
     "createdAt": 1777120951164
+  },
+  "my-project-agent-fmmfe": {
+    "id": "my-project-agent-fmmfe",
+    "name": "My Project Agent",
+    "description": "Configured via ToolRelay",
+    "servers": [
+      "github"
+    ],
+    "createdAt": 1777124652898
   }
 }

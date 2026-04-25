@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, Loader2, Rocket } from "lucide-react";
+import { Send, Loader2, Rocket, X } from "lucide-react";
 import { ToolRecommendation } from "@/lib/intent-agent";
 import { ToolSuggestion } from "./ToolSuggestion";
 import { useRouter } from "next/navigation";
@@ -104,14 +104,23 @@ export function ChatInterface() {
   };
 
   return (
-    <div className="flex flex-col w-full max-w-4xl mx-auto h-[80vh]">
+    <div className="flex flex-col w-full max-w-3xl mx-auto h-[80vh]">
       {/* Messages Area */}
       <div className="flex-1 overflow-y-auto p-4 space-y-6 scrollbar-hide">
         {messages.length === 0 && (
-          <div className="h-full flex flex-col items-center justify-center text-center opacity-50 space-y-4">
-            <Rocket className="w-16 h-16 mb-4 text-primary" />
-            <h2 className="text-2xl font-bold text-white">What are you building?</h2>
-            <p className="max-w-md">Describe your AI agent's purpose, and we'll configure the perfect set of MCP servers for it.</p>
+          <div className="h-full flex flex-col items-center justify-center text-center space-y-6">
+            {/* Badge sticker */}
+            <span className="badge-sticker text-base">
+              Configure
+            </span>
+
+            {/* Editorial serif heading */}
+            <h1 className="text-4xl sm:text-5xl font-normal leading-tight text-[#1A1A1A] font-[family-name:var(--font-instrument-serif)]">
+              What are you <em>building</em>?
+            </h1>
+            <p className="max-w-md text-text-muted text-lg font-[family-name:var(--font-instrument-sans)]">
+              Describe your AI agent&apos;s purpose, and we&apos;ll configure the perfect set of MCP servers for it.
+            </p>
           </div>
         )}
         
@@ -126,13 +135,13 @@ export function ChatInterface() {
               <div className={`max-w-[80%] rounded-2xl p-4 ${
                 msg.role === "user" 
                   ? "bg-primary text-white ml-12" 
-                  : "glass-card mr-12 text-gray-200"
+                  : "warm-card mr-12 text-[#3A3A3A]"
               }`}>
-                <p className="whitespace-pre-wrap">{msg.content}</p>
+                <p className="whitespace-pre-wrap font-[family-name:var(--font-instrument-sans)]">{msg.content}</p>
                 
                 {msg.recommendations && msg.recommendations.length > 0 && (
                   <div className="mt-6 space-y-2">
-                    <p className="text-sm font-semibold text-gray-400 mb-3 uppercase tracking-wider">Suggested Tools</p>
+                    <p className="text-sm font-bold text-text-muted mb-3 uppercase tracking-[0.15em] font-[family-name:var(--font-instrument-sans)]">Suggested Tools</p>
                     {msg.recommendations.map(rec => (
                       <ToolSuggestion 
                         key={rec.serverName}
@@ -150,9 +159,9 @@ export function ChatInterface() {
 
         {loading && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-start">
-            <div className="glass-card p-4 rounded-2xl flex items-center gap-3 text-gray-400">
+            <div className="warm-card p-4 rounded-2xl flex items-center gap-3 text-text-muted">
               <Loader2 className="w-5 h-5 animate-spin text-primary" />
-              Thinking...
+              <span className="font-[family-name:var(--font-instrument-sans)]">Thinking...</span>
             </div>
           </motion.div>
         )}
@@ -162,7 +171,7 @@ export function ChatInterface() {
             <button 
               onClick={handleCreateEndpoint}
               disabled={selectedServers.size === 0 || creatingEndpoint}
-              className="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white font-bold shadow-lg shadow-primary/30 hover:shadow-primary/50 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2"
+              className="px-8 py-3.5 rounded-lg bg-primary text-white font-bold shadow-md hover:shadow-lg hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2 font-[family-name:var(--font-instrument-sans)] uppercase tracking-wider text-sm"
             >
               {creatingEndpoint ? <Loader2 className="w-5 h-5 animate-spin" /> : <Rocket className="w-5 h-5" />}
               {creatingEndpoint ? "Deploying Servers..." : "Create Endpoint"}
@@ -173,23 +182,31 @@ export function ChatInterface() {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input Area */}
+      {/* Input Area — warm, minimal, editorial */}
       <div className="p-4 relative">
         <form onSubmit={handleSubmit} className="relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-          <div className="relative flex items-center bg-[#111827] rounded-full px-6 py-4 border border-white/10 shadow-2xl">
+          <div className="relative flex items-center bg-white rounded-lg px-5 py-4 border border-border shadow-sm transition-shadow focus-within:shadow-md focus-within:border-primary/40">
             <input
               type="text"
               value={input}
               onChange={e => setInput(e.target.value)}
               placeholder="e.g. A GitHub assistant that reads issues and writes code..."
-              className="flex-1 bg-transparent border-none outline-none text-white placeholder-gray-500"
+              className="flex-1 bg-transparent border-none outline-none text-[#1A1A1A] placeholder-[#C8C4BC] font-[family-name:var(--font-instrument-sans)] text-base"
               disabled={loading}
             />
+            {input && (
+              <button
+                type="button"
+                onClick={() => setInput("")}
+                className="mr-3 p-1 text-text-muted hover:text-[#1A1A1A] transition-colors"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
             <button 
               type="submit" 
               disabled={!input.trim() || loading}
-              className="ml-4 p-2 rounded-full text-white bg-primary hover:bg-primary-dark disabled:opacity-50 disabled:bg-gray-600 transition-colors"
+              className="p-2.5 rounded-lg text-white bg-primary hover:bg-primary-dark disabled:opacity-40 disabled:bg-[#C8C4BC] transition-colors"
             >
               <Send className="w-5 h-5" />
             </button>

@@ -6,7 +6,7 @@ export function GlassCard({ className, children, ...props }: GlassCardProps) {
   return (
     <div
       className={cn(
-        "glass-card p-6",
+        "warm-card p-6",
         className
       )}
       {...props}
