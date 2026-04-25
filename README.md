@@ -172,4 +172,4 @@ FIREBASE_AUTH_DOMAIN=
 
 ## Built At
 
-[Hackathon Name] · [Date] · Team [Your Team Name]
+[Open Loop] · [25/4/2026] · Team [OpenSHA]
